@@ -1,2 +1,2 @@
-# SportApp_EjerciciosService
-Servicio relacionado con los ejercicios
+# SportApp_EjerciciosServices
+SportApp jercicios Services
