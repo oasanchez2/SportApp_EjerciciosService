@@ -1,7 +1,7 @@
-from src.commands.create_exercise import CreateUser
+from src.commands.create_ejercicio import CreateUser
 from src.session import Session, engine
 from src.models.model import Base
-from src.models.exercise import User
+from src.models.ejercicio import User
 from src.errors.errors import UserAlreadyExists
 from src.errors.errors import IncompleteParams
 

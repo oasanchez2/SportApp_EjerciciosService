@@ -1,8 +1,7 @@
 from .base_command import BaseCommannd
-from ..session import Session, engine
-from ..models.model import Base
+from .. import dynamodb_ejercicio
 
 class Reset(BaseCommannd):  
   def execute(self):
-    Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(engine)
+    dynamodb_ejercicio.deleteTable()
+    dynamodb_ejercicio.create_table()
