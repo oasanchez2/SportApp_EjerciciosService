@@ -1,8 +1,8 @@
 from src.session import Session, engine
 from src.models.model import Base
-from src.models.exercise import User
+from src.models.ejercicio import User
 from application import application
-from src.commands.create_exercise import CreateUser
+from src.commands.create_ejercicio import CreateUser
 import json
 from datetime import datetime, timedelta
 
