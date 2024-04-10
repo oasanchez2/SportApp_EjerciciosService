@@ -121,6 +121,38 @@ def get_Item_nombre(nombre):
 
     return resultados
 
+def get_all():
+    # Escaneo de todos los elementos de la tabla
+    response = dynamodb.scan(
+        TableName=table_name
+    )
+
+    # Recuperar los items escaneados
+    items = response['Items']
+    if not items:
+        return None
+    
+    # Si hay más resultados, seguir escaneando
+    while 'LastEvaluatedKey' in response:
+        response = dynamodb.scan(
+            TableName=table_name,
+            ExclusiveStartKey=response['LastEvaluatedKey']
+        )
+        items.extend(response['Items'])
+    
+    # Procesar los items encontrados
+    resultados = []
+    for item in items:
+        id_ejercicio = item['id_ejercicio']['S']
+        nombre = item['nombre']['S']
+        estado = item['estado']['BOOL']
+        url_imagen = item['url_imagen']['S']
+    
+        ejercicio = Ejercicio(id_ejercicio,nombre, estado, url_imagen)
+        resultados.append(ejercicio.to_dict())
+    
+    return resultados
+
 def tablaExits(name):
     try:
         response = dynamodb.describe_table(TableName=name)
