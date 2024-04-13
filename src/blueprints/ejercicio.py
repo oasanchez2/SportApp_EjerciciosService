@@ -17,13 +17,13 @@ def show(id):
     ejercicio = GetEjercicio(id).execute() 
     return jsonify(ejercicio)
 
-@ejercicios_blueprint.route('/ejercicios', methods = ['GET'])
+@ejercicios_blueprint.route('/ejercicios/all', methods = ['GET'])
 def alls():
     """ Authenticate(auth_token()).execute() """
     ejercicio = GetTodos().execute() 
     return jsonify(ejercicio)
 
-@ejercicios_blueprint.route('/', methods = ['GET'])
+@ejercicios_blueprint.route('/ejercicios/ping', methods = ['GET'])
 def ping():
     return 'pong'
 
