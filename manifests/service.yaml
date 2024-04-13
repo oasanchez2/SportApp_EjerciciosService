@@ -5,8 +5,6 @@ metadata:
   labels:
     app: ejercicios
 spec:
-  type: ExternalName
-  externalName: a5f58bedf010248db91006bd56c4cec8-1828807224.us-east-1.elb.amazonaws.com
   selector:
     app: ejercicios
 
@@ -14,4 +12,21 @@ spec:
     - port: 5001
       targetPort: 5001
 
-  type: LoadBalancer
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ejercicios-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /ejercicios
+            pathType: Prefix
+            backend:
+              service:
+                name: ejercicios
+                port:
+                  number: 5001
