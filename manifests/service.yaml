@@ -19,6 +19,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
     - host: a1b7563a0858f4f71b48c713a5de8c20-991979942.us-east-1.elb.amazonaws.com
       http:
