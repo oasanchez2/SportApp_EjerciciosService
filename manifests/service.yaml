@@ -6,7 +6,7 @@ metadata:
     app: ejercicios
 spec:
   type: ExternalName
-  externalName: a5f58bedf010248db91006bd56c4cec8
+  externalName: a5f58bedf010248db91006bd56c4cec8-1828807224.us-east-1.elb.amazonaws.com
   selector:
     app: ejercicios
 
