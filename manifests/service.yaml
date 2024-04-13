@@ -7,10 +7,25 @@ metadata:
 spec:
   selector:
     app: ejercicios
-
   ports:
-    - port: 5001
+    - port: 80
       targetPort: 5001
 
-  type: LoadBalancer
-
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ejercicios-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: a1b7563a0858f4f71b48c713a5de8c20-991979942.us-east-1.elb.amazonaws.com
+      http:
+        paths:
+          - path: /ejercicios
+            pathType: Prefix
+            backend:
+              service:
+                name: ejercicios
+                port:
+                  number: 80
