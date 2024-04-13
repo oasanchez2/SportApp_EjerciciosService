@@ -5,6 +5,8 @@ metadata:
   labels:
     app: ejercicios
 spec:
+  type: ExternalName
+  externalName: a5f58bedf010248db91006bd56c4cec8
   selector:
     app: ejercicios
 
@@ -13,5 +15,3 @@ spec:
       targetPort: 5001
 
   type: LoadBalancer
-  loadBalancerIP: "54.161.102.172"
-
