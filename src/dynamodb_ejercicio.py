@@ -31,10 +31,7 @@ def create_table():
                         'KeyType': 'HASH'  # Clave de partición
                     }
                 ],        
-                ProvisionedThroughput={
-                'ReadCapacityUnits': 5,
-                'WriteCapacityUnits': 5,
-                } 
+                BillingMode='PAY_PER_REQUEST'
             )
           
         # Espera hasta que la tabla exista
