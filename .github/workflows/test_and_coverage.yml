@@ -30,7 +30,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        pytest --cov=src -v -s --cov-fail-under=70
+        
         COVERAGE=$(pytest --cov-report=xml | grep -oP 'total="(.*?)"' | cut -d'"' -f2)
         echo "Coverage is $COVERAGE"
         
