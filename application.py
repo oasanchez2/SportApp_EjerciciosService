@@ -2,12 +2,12 @@ from flask import Flask, jsonify
 from src.blueprints.ejercicio import ejercicios_blueprint
 from src.errors.errors import ApiError
 from flask_cors import CORS
-from src import dynamodb_ejercicio
+from src.dynamodb_ejercicio  import DynamoDbEjercicio
 
 application = Flask(__name__)
 application.register_blueprint(ejercicios_blueprint)
 CORS(application)
-dynamodb_ejercicio.create_table()
+DynamoDbEjercicio().create_table()
 ## add comment
 @application.errorhandler(ApiError)
 def handle_exception(err):

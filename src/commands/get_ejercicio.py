@@ -1,6 +1,6 @@
 from .base_command import BaseCommannd
 from ..errors.errors import Unauthorized, InvalidParams, ExerciseNotFoundError
-from .. import dynamodb_ejercicio
+from ..dynamodb_ejercicio import DynamoDbEjercicio
 
 class GetEjercicio (BaseCommannd):
   def __init__(self, exercise_id):
@@ -11,7 +11,7 @@ class GetEjercicio (BaseCommannd):
   
   def execute(self):
     
-    result  = dynamodb_ejercicio.get_item(self.exercise_id)
+    result  = DynamoDbEjercicio().get_item(self.exercise_id)
     if result is None:
       raise ExerciseNotFoundError()
     
