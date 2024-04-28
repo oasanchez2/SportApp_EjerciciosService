@@ -2,7 +2,7 @@ import uuid
 from .base_command import BaseCommannd
 from ..models.ejercicio import Ejercicio
 from ..errors.errors import IncompleteParams, InvalidNombreError, ExercisesAlreadyExists
-from .. import dynamodb_ejercicio
+from ..dynamodb_ejercicio import DynamoDbEjercicio
 
 class CreateEjercicio(BaseCommannd):
   def __init__(self, data):
@@ -19,7 +19,7 @@ class CreateEjercicio(BaseCommannd):
       if self.exercise_exist(self.data['nombre']):
         raise ExercisesAlreadyExists()
       
-      dynamodb_ejercicio.insert_item(posted_exercises)
+      DynamoDbEjercicio().insert_item(posted_exercises)
       
       return posted_exercises.to_dict()
         
@@ -28,7 +28,7 @@ class CreateEjercicio(BaseCommannd):
       raise IncompleteParams()
   
   def exercise_exist(self, nombre):
-    result = dynamodb_ejercicio.get_Item_nombre(nombre)
+    result = DynamoDbEjercicio().get_Item_nombre(nombre)
     if result is None:
       return False
     else:
