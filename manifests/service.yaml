@@ -19,7 +19,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: acf3cd60a99134a2ebd3eb390e09ba23-700148249.us-east-1.elb.amazonaws.com
+    - host: a30e8ad80d7ce496f87c317e39919031-393841883.us-east-1.elb.amazonaws.com
       http:
         paths:
           - path: /ejercicios
